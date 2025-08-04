@@ -436,12 +436,6 @@ const Service = () => {
                     </div>
                 </section>
             </main>
-
-            <footer style={footerStyle}>
-                <div style={containerStyle}>
-                    <p>&copy; 2025 Promoi. Hak Cipta Dilindungi.</p>
-                </div>
-            </footer>
         </div>
     );
 };

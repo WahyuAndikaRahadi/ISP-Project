@@ -2,7 +2,7 @@ import React from 'react'
 
 const QualityAndPrice = () => {
   return (
-    <div>hahahaha</div>
+    <div>Quallity and price</div>
   )
 }
 
