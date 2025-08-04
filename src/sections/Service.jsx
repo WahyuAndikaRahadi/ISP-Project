@@ -359,7 +359,7 @@ const Service = () => {
 
         // Fungsi untuk menerapkan kelas responsif secara dinamis
         const applyResponsiveClasses = () => {
-            const width = window.innerWidth; 
+            const width = window.innerWidth;
 
             // Header
             document.querySelector('[data-main-header]')?.classList.toggle('main-header-responsive', width <= 768);
