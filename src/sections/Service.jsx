@@ -394,7 +394,7 @@ const Service = () => {
                 {/* Header Utama (SIMPATI, Telkomsel Halo) */}
                 <div style={mainHeaderStyle} data-main-header>
                     <span style={headerItemActiveStyle} data-header-item>Layanan</span>
-                    <span style={{...headerItemActiveStyle, color: '#555', borderBottom: 'none'}} data-header-item>Telkomsel Halo</span> {/* Telkomsel Halo tidak aktif di gambar */}
+                    <span style={{...headerItemActiveStyle, color: '#555', borderBottom: 'none'}} data-header-item></span> {/* Telkomsel Halo tidak aktif di gambar */}
                 </div>
 
                 {/* Hero Section / Telkomsel Video */}
