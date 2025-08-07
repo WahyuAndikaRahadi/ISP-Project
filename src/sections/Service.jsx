@@ -85,7 +85,7 @@ const Service = () => {
 
     const pageStyle = {
         fontFamily: "'Poppins', sans-serif",
-        backgroundColor: '#f4f7f6',
+        backgroundColor: '#000000',
         color: '#333',
         lineHeight: '1.6',
         paddingTop: '20px', // Memberi sedikit ruang di atas
@@ -111,7 +111,7 @@ const Service = () => {
         display: 'flex',
         alignItems: 'center',
         gap: '40px',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#000000',
         borderRadius: '15px',
         boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
         padding: '30px',
@@ -397,25 +397,6 @@ const Service = () => {
                     <span style={{...headerItemActiveStyle, color: '#555', borderBottom: 'none'}} data-header-item></span> {/* Telkomsel Halo tidak aktif di gambar */}
                 </div>
 
-                {/* Hero Section / Telkomsel Video */}
-                <section style={heroSectionStyle} data-hero-section>
-                    <div style={heroImageContainerStyle} data-hero-image-container>
-                        <img src={telkomselVideoImage} alt="Telkomsel Video" style={heroImageStyle} />
-                    </div>
-                    <div style={heroContentStyle} data-hero-content>
-                        <h2 style={heroH2Style} data-hero-h2>Namselink Video</h2>
-                        <p style={heroPStyle} data-hero-p>Streaming konten favorit dengan MAXstream</p>
-                        <button
-                            className="see-all-packages-btn-hover"
-                            style={seeAllPackagesBtnStyle}
-                            data-see-all-packages-btn
-                            onClick={() => alert('Melihat semua paket video')}
-                        >
-                            Lihat semua paket
-                        </button>
-                    </div>
-                </section>
-
                 {/* Bagian Paket SIMPATI */}
                 <section style={packageSectionStyle}>
                     <h2 style={sectionTitleStyle} data-section-title>Paket</h2>
@@ -426,15 +407,6 @@ const Service = () => {
                     </div>
                 </section>
 
-                {/* Bagian Paket Telkomsel Halo */}
-                <section style={packageSectionStyle}>
-                    <h2 style={sectionTitleStyle} data-section-title>Telkomsel Halo</h2>
-                    <div style={packageGridStyle} data-package-grid>
-                        {telkomselHaloPackages.map(pkg => (
-                            <PackageCard key={pkg.id} packageInfo={pkg} />
-                        ))}
-                    </div>
-                </section>
             </main>
         </div>
     );

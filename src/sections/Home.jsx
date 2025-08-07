@@ -72,7 +72,7 @@ function Home() {
 
   return (
     <div className="relative flex items-center justify-between min-h-screen bg-gradient-to-br from-gray-900 to-black text-white p-4 overflow-hidden">
-      {/* Konten kiri (penjelasan dan CTA) */} 
+      {/* Konten kiri (penjelasan dan CTA) */}
       <div className="relative z-10 flex flex-col items-start justify-center w-full md:w-1/2 p-8 text-center md:text-left pl-20">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
           Selalu Terhubung!
@@ -84,26 +84,26 @@ function Home() {
         </button>
       </div>
 
-      {/* Globe di pojok kanan bawah */}
-      <div className="absolute bottom-0 -right-14 z-0 w-full md:w-1/2 h-1/2 md:h-full flex items-end justify-end">
+      {/* Globe di pojok kanan bawah, hanya seperempat yang terlihat */}
+      <div className="absolute z-0 -bottom-[700px] -right-[500px] w-[1400px] h-[1400px]">
         <Globe
           ref={globeEl}
           globeImageUrl={null}
           bumpImageUrl={null}
           showGlobe={false}
           showGraticules={false}
-          backgroundColor="rgba(0,0,0,0)"
+          backgroundColor="#100F2F"
           showAtmosphere={false}
           atmosphereColor="#ADD8E6"
           atmosphereAltitude={0.25}
           polygonsData={[]}
           polygonCapMaterial={polygonsMaterial}
           polygonSideColor={() => 'rgba(0, 0, 0, 0)'}
-          width={window.innerWidth > 768 ? 800 : window.innerWidth * 0.9}
-          height={window.innerWidth > 768 ? 600 : window.innerHeight * 0.7}
+          width={1400}
+          height={1400}
           onGlobeReady={() => {
             if (globeEl.current) {
-              globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 2.5 }, 0);
+              globeEl.current.pointOfView({ lat: 0, lng: 0, altitude: 2 }, 0);
               globeEl.current.controls().autoRotate = true;
               globeEl.current.controls().autoRotateSpeed = 0.5;
               // Nonaktifkan scroll-to-zoom
