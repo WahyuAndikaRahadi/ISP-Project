@@ -1,75 +1,94 @@
-import React from 'react'
+import React from 'react';
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md mx-auto">
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-6" >Kirim kritik & Saran Anda</h2>
-          
-          <div className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Nama
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="masukan nama anda"
-              />
-            </div>
+    <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-2">Hubungi Kami</h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            Kami senang mendengar dari Anda. Kirimkan pesan atau kunjungi kami.
+          </p>
+        </div>
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="your@gmail.com"
-              />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Bagian Kiri: Informasi Kontak */}
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+            <h3 className="text-2xl font-semibold mb-4">Informasi Kontak</h3>
+            <div className="space-y-6 text-gray-600 dark:text-gray-300">
+              <div className="flex items-start">
+                <span className="text-2xl text-purple-600 mr-4">📍</span>
+                <div>
+                  <p className="font-semibold text-gray-900 dark:text-white">Alamat Kami</p>
+                  <p>Jalan Internet No. 123, Jakarta, Indonesia</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <span className="text-2xl text-purple-600 mr-4">📧</span>
+                <div>
+                  <p className="font-semibold text-gray-900 dark:text-white">Email Kami</p>
+                  <p>info@mywebsite.com</p>
+                </div>
+              </div>
+              <div className="flex items-start">
+                <span className="text-2xl text-purple-600 mr-4">📞</span>
+                <div>
+                  <p className="font-semibold text-gray-900 dark:text-white">Telepon</p>
+                  <p>+62 812-3456-789</p>
+                </div>
+              </div>
             </div>
+          </div>
 
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                NO Handphone
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="08xxxxxxx"
-              />
-            </div>
+          {/* Bagian Kanan: Formulir Kontak */}
+          <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+            <h3 className="text-2xl font-semibold mb-4">Kirim Pesan</h3>
+            <form className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Nama</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  placeholder="Masukkan nama Anda"
+                />
+              </div>
 
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Pesan
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="Pesan anda"
-              />
-            </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  placeholder="your@gmail.com"
+                />
+              </div>
 
-            <button
-              className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200"
-            >
-              Kirim pesan
-            </button>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Pesan</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  placeholder="Pesan Anda"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
+              >
+                Kirim Pesan
+              </button>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  )
-}
+    </section>
+  );
+};
 
-export default Contact
+export default Contact;
