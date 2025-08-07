@@ -72,7 +72,7 @@ function Home() {
 
   return (
     <div className="relative flex items-center justify-between min-h-screen bg-gradient-to-br from-gray-900 to-black text-white p-4 overflow-hidden">
-      {/* Konten kiri (penjelasan dan CTA) */}
+      {/* Konten kiri (penjelasan dan CTA) */} 
       <div className="relative z-10 flex flex-col items-start justify-center w-full md:w-1/2 p-8 text-center md:text-left pl-20">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
           Selalu Terhubung!
