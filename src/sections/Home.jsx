@@ -73,7 +73,7 @@ function Home() {
   return (
     <div className="relative flex items-center justify-between min-h-screen bg-[#100F2F] from-gray-900 to-black text-white p-10 overflow-hidden ">
       {/* Konten kiri (penjelasan dan CTA) */}
-      <div className="relative z-10 flex flex-col items-start justify-center w-full md:w-1/2 p-8 text-center md:text-left">
+      <div className="relative z-10 flex flex-col items-center md:items-start justify-center w-full md:w-1/2 p-8 text-center md:text-left">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-tight">
           Selalu Terhubung!
         </h1>
