@@ -1,8 +1,24 @@
 import React from 'react';
 
 const Contact = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    // Cek validasi browser
+    if (!form.checkValidity()) {
+      form.reportValidity(); // munculkan tooltip "Isi bidang ini"
+      return;
+    }
+
+    alert("Pesan terkirim!");
+  };
+
   return (
-    <section id="contact" className="py-20 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <section
+      id="contact"
+      className="py-20 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white"
+    >
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-2">Hubungi Kami</h2>
@@ -12,7 +28,7 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Bagian Kiri: Informasi Kontak */}
+          {/* Informasi Kontak */}
           <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
             <h3 className="text-2xl font-semibold mb-4">Informasi Kontak</h3>
             <div className="space-y-6 text-gray-600 dark:text-gray-300">
@@ -40,38 +56,47 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Bagian Kanan: Formulir Kontak */}
+          {/* Formulir Kontak */}
           <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
             <h3 className="text-2xl font-semibold mb-4">Kirim Pesan</h3>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Nama</label>
+                <label htmlFor="name" className="block text-sm font-medium mb-2">
+                  Nama
+                </label>
                 <input
                   type="text"
                   id="name"
                   name="name"
+                  required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder="Masukkan nama Anda"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  Email
+                </label>
                 <input
                   type="email"
                   id="email"
                   name="email"
+                  required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder="your@gmail.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Pesan</label>
+                <label htmlFor="message" className="block text-sm font-medium mb-2">
+                  Pesan
+                </label>
                 <textarea
                   id="message"
                   name="message"
                   rows={4}
+                  required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                   placeholder="Pesan Anda"
                 ></textarea>
