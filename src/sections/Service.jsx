@@ -9,7 +9,6 @@ const servicePackages = [
     data: 'Unlimited',
     price: 'Rp 250.000',
     features: ['Koneksi stabil', 'Cocok untuk streaming', 'Gratis instalasi'],
-    icon: '📶', // Mengganti ikon dengan emoji
   },
   {
     id: 2,
@@ -18,7 +17,6 @@ const servicePackages = [
     data: 'Unlimited',
     price: 'Rp 450.000',
     features: ['Kecepatan super', 'Ideal untuk banyak perangkat', 'Dukungan 24/7'],
-    icon: '⚡', // Mengganti ikon dengan emoji
   },
   {
     id: 3,
@@ -27,7 +25,6 @@ const servicePackages = [
     data: 'Unlimited',
     price: 'Rp 800.000',
     features: ['Jaringan prioritas', 'SLA 99.9%', 'IP Public'],
-    icon: '💼', // Mengganti ikon dengan emoji
   },
 ];
 
