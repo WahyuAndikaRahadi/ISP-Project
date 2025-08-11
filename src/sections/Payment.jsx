@@ -428,7 +428,7 @@ const Payment = () => {
               {selectedMethod.id === 'qris' && (
                 <div className="text-center">
                   <div className="bg-white border-4 border-gray-300 rounded-2xl p-8 mb-4 inline-block">
-                    <div className="text-8xl mb-4">📱</div>
+                    <div className="text-8xl mb-4"></div>
                     <div className="w-48 h-48 bg-black mx-auto mb-4 rounded-lg flex items-center justify-center">
                       <div className="text-white text-xs">QR CODE</div>
                     </div>
