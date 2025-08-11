@@ -96,7 +96,7 @@ const Footer = () => {
 
         {/* Bagian Hak Cipta */}
         <div className="text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} MyWebsite. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Namselink. All rights reserved.</p>
         </div>
       </div>
     </footer>

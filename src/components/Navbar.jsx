@@ -103,7 +103,7 @@ const Navbar = ({ onMenuToggle }) => {
           <div className="flex-shrink-0">
             <img 
               src="/path/to/your/logo.png" 
-              alt="My Website Logo" 
+              alt="Logo Namselink" 
               className={`h-8 transition-transform duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`} 
             />
           </div>
