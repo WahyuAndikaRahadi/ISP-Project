@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Main application component that renders the Contact section
 export default function App() {
@@ -9,10 +9,77 @@ export default function App() {
   );
 }
 
-// The Contact component, updated with a map and custom message box
+// Language dictionary for Contact component
+const translations = {
+  en: {
+    title: 'Contact Us',
+    subtitle: 'We\'d love to hear from you. Send us a message or visit us.',
+    contactInfoTitle: 'Contact Information',
+    addressLabel: 'Our Address',
+    address: 'Jl. KRT. Radjiman Widyodiningrat, Rawa Badung, No 32 RT 007/RW 007, Kel. Jatinegara, Kec. Cakung, Kota Jakarta Timur, 13930',
+    emailLabel: 'Our Email',
+    email: 'smknegeri69jkt@gmail.com',
+    phoneLabel: 'Phone',
+    phone: '021-22131229',
+    sendMessageTitle: 'Send a Message',
+    nameLabel: 'Name',
+    namePlaceholder: 'Enter your name',
+    emailLabelForm: 'Email',
+    emailPlaceholder: 'your@gmail.com',
+    messageLabel: 'Message',
+    messagePlaceholder: 'Your message',
+    submitButton: 'Send Message',
+    successMessage: 'Your message has been sent successfully!',
+  },
+  id: {
+    title: 'Hubungi Kami',
+    subtitle: 'Kami senang mendengar dari Anda. Kirimkan pesan atau kunjungi kami.',
+    contactInfoTitle: 'Informasi Kontak',
+    addressLabel: 'Alamat Kami',
+    address: 'Jl. KRT. Radjiman Widyodiningrat, Rawa Badung, No 32 RT 007/RW 007, Kel. Jatinegara, Kec. Cakung, Kota Jakarta Timur, 13930',
+    emailLabel: 'Email Kami',
+    email: 'smknegeri69jkt@gmail.com',
+    phoneLabel: 'Telepon',
+    phone: '021-22131229',
+    sendMessageTitle: 'Kirim Pesan',
+    nameLabel: 'Nama',
+    namePlaceholder: 'Masukkan nama Anda',
+    emailLabelForm: 'Email',
+    emailPlaceholder: 'your@gmail.com',
+    messageLabel: 'Pesan',
+    messagePlaceholder: 'Pesan Anda',
+    submitButton: 'Kirim Pesan',
+    successMessage: 'Pesan Anda telah berhasil dikirim!',
+  },
+};
+
 const Contact = () => {
   const [message, setMessage] = useState('');
   const [showMessage, setShowMessage] = useState(false);
+  const [language, setLanguage] = useState(() => {
+    const savedLang = localStorage.getItem('language');
+    return savedLang || 'id'; // Default to Indonesian
+  });
+
+  // Translate text based on current language
+  const t = (key) => translations[language][key] || key;
+
+  // Update language state if localStorage changes
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const newLang = localStorage.getItem('language');
+      if (newLang && newLang !== language) {
+        setLanguage(newLang);
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    handleStorageChange();
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [language]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +90,7 @@ const Contact = () => {
       return;
     }
 
-    setMessage("Pesan Anda telah berhasil dikirim!");
+    setMessage(t('successMessage'));
     setShowMessage(true);
 
     setTimeout(() => {
@@ -40,9 +107,9 @@ const Contact = () => {
     >
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">Hubungi Kami</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('title')}</h2>
           <p className="text-md md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Kami senang mendengar dari Anda. Kirimkan pesan atau kunjungi kami.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -61,15 +128,15 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Information with Map */}
           <div className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-lg flex flex-col transform transition duration-300 hover:scale-105">
-            <h3 className="text-xl md:text-2xl font-semibold mb-6">Informasi Kontak</h3>
+            <h3 className="text-xl md:text-2xl font-semibold mb-6">{t('contactInfoTitle')}</h3>
             <div className="space-y-6 text-gray-600 dark:text-gray-300">
 
               {/* Alamat */}
               <div className="flex items-start">
                 <i className="ri-map-pin-line text-primary text-2xl mr-4"></i>
                 <div>
-                  <p className="font-semibold text-gray-900 dark:text-white">Alamat Kami</p>
-                  <p>Jl. KRT. Radjiman Widyodiningrat, Rawa Badung, No 32 RT 007/RW 007, Kel. Jatinegara, Kec. Cakung, Kota Jakarta Timur, 13930</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">{t('addressLabel')}</p>
+                  <p>{t('address')}</p>
                 </div>
               </div>
 
@@ -77,8 +144,8 @@ const Contact = () => {
               <div className="flex items-start">
                 <i className="ri-mail-line text-primary text-2xl mr-4"></i>
                 <div>
-                  <p className="font-semibold text-gray-900 dark:text-white">Email Kami</p>
-                  <p>smknegeri69jkt@gmail.com</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">{t('emailLabel')}</p>
+                  <p>{t('email')}</p>
                 </div>
               </div>
 
@@ -86,8 +153,8 @@ const Contact = () => {
               <div className="flex items-start">
                 <i className="ri-phone-line text-primary text-2xl mr-4"></i>
                 <div>
-                  <p className="font-semibold text-gray-900 dark:text-white">Telepon</p>
-                  <p>021-22131229</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">{t('phoneLabel')}</p>
+                  <p>{t('phone')}</p>
                 </div>
               </div>
             </div>
@@ -109,11 +176,11 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-lg transform transition duration-300 hover:scale-105">
-            <h3 className="text-xl md:text-2xl font-semibold mb-6">Kirim Pesan</h3>
+            <h3 className="text-xl md:text-2xl font-semibold mb-6">{t('sendMessageTitle')}</h3>
             <form className="space-y-6" onSubmit={handleSubmit} noValidate>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Nama
+                  {t('nameLabel')}
                 </label>
                 <input
                   type="text"
@@ -121,13 +188,13 @@ const Contact = () => {
                   name="name"
                   required
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  placeholder="Masukkan nama Anda"
+                  placeholder={t('namePlaceholder')}
                 />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
+                  {t('emailLabelForm')}
                 </label>
                 <input
                   type="email"
@@ -135,13 +202,13 @@ const Contact = () => {
                   name="email"
                   required
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  placeholder="your@gmail.com"
+                  placeholder={t('emailPlaceholder')}
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Pesan
+                  {t('messageLabel')}
                 </label>
                 <textarea
                   id="message"
@@ -149,7 +216,7 @@ const Contact = () => {
                   rows={4}
                   required
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  placeholder="Pesan Anda"
+                  placeholder={t('messagePlaceholder')}
                 ></textarea>
               </div>
 
@@ -157,7 +224,7 @@ const Contact = () => {
                 type="submit"
                 className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
               >
-                Kirim Pesan
+                {t('submitButton')}
               </button>
             </form>
           </div>
