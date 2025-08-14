@@ -76,15 +76,26 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4 text-white">Contact Us</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <p>Jl. KRT. Radjiman Widyodiningrat, Rawa Badung, No 32 RT 007/RW 007, Kel. Jatinegara, Kec. Cakung, Kota Jakarta Timur, 13930</p>
+                <p>
+                  Jl. KRT. Radjiman Widyodiningrat, Rawa Badung, No 32 RT 007/RW 007,
+                  Kel. Jatinegara, Kec. Cakung, Kota Jakarta Timur, 13930
+                </p>
               </li>
               <li>
-                <a href="https://www.smkn69jkt.sch.id/" className="hover:text-white transition-colors duration-300">
-                 www.smkn69jkt.sch.id
+                <a
+                  href="https://www.smkn69jkt.sch.id/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors duration-300"
+                >
+                  www.smkn69jkt.sch.id
                 </a>
               </li>
               <li>
-                <a href="tel:021-22131229" className="hover:text-white transition-colors duration-300">
+                <a
+                  href="tel:021-22131229"
+                  className="hover:text-white transition-colors duration-300"
+                >
                   021-22131229
                 </a>
               </li>
