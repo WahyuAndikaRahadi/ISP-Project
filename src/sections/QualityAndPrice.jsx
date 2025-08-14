@@ -15,7 +15,7 @@ const QualityAndPrice = () => {
           <span className="inline-block px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-semibold rounded-full mb-6 shadow-lg">
             KEUNGGULAN KAMI
           </span>
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 bg-clip-text text-transparent leading-tight">
+          <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg leading-tight">
             Solusi Internet
             <br />
             Terdepan untuk Anda
