@@ -40,6 +40,8 @@ const Navbar = ({ onMenuToggle }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  // State for language dropdown visibility
+  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   // State for language, defaults to 'en' or saved preference
   const [language, setLanguage] = useState(() => {
     const savedLang = localStorage.getItem('language');
@@ -174,7 +176,11 @@ const Navbar = ({ onMenuToggle }) => {
           {/* Dark Mode and Language Toggle - Rightmost */}
           <div className="hidden md:flex items-center flex-shrink-0 space-x-4">
             {/* Language Selector for Desktop */}
-            <div className="relative group">
+            <div 
+              className="relative"
+              onMouseEnter={() => setShowLanguageDropdown(true)}
+              onMouseLeave={() => setShowLanguageDropdown(false)}
+            >
               <button 
                 className="flex items-center space-x-1 focus:outline-none p-2 rounded-full hover:bg-gray-700 dark:hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105 active:scale-95"
               >
@@ -183,7 +189,7 @@ const Navbar = ({ onMenuToggle }) => {
                 </svg>
                 <span>{language === 'en' ? 'EN' : 'ID'}</span>
               </button>
-              <div className="absolute right-0 mt-2 w-32 bg-gray-700 dark:bg-gray-800 rounded-md shadow-lg py-1 opacity-0 group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 ease-out pointer-events-none group-hover:pointer-events-auto">
+              <div className={`absolute right-0 mt-2 w-32 bg-gray-700 dark:bg-gray-800 rounded-md shadow-lg py-1 transition-all duration-200 ease-out ${showLanguageDropdown ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'}`}>
                 <button 
                   onClick={() => toggleLanguage('en')} 
                   className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-gray-600 dark:hover:bg-gray-700 rounded"
@@ -252,3 +258,4 @@ const Navbar = ({ onMenuToggle }) => {
 };
 
 export default Navbar;
+
