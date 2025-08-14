@@ -35,6 +35,7 @@ const translations = {
   },
 };
 
+// Main Navbar Component
 const Navbar = ({ onMenuToggle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -104,7 +105,7 @@ const Navbar = ({ onMenuToggle }) => {
   const toggleLanguage = (lang) => {
     setLanguage(lang);
     localStorage.setItem('language', lang);
-    window.location.reload(); // This reloads the page
+    window.location.reload(); // This reloads the page to apply translations
   };
 
   // Handle mobile menu toggle
@@ -142,6 +143,21 @@ const Navbar = ({ onMenuToggle }) => {
 
   return (
     <>
+      <style>{`
+        @keyframes toggle-anim {
+          from {
+            transform: scale(0.8) rotate(0deg);
+            opacity: 0.5;
+          }
+          to {
+            transform: scale(1) rotate(360deg);
+            opacity: 1;
+          }
+        }
+        .animate-toggle {
+          animation: toggle-anim 0.5s ease-in-out;
+        }
+      `}</style>
       {/* Overlay background with fade-in animation */}
       <div className={`fixed inset-0 bg-black/60 z-40 transition-opacity duration-500 md:hidden ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={handleMenuToggle} />
 
@@ -205,14 +221,22 @@ const Navbar = ({ onMenuToggle }) => {
               </div>
             </div>
 
-            {/* Dark Mode Toggle for Desktop */}
+            {/* Dark Mode Toggle for Desktop with SVG and animation */}
             <button 
               onClick={toggleDarkMode} 
               className="focus:outline-none p-2 rounded-full hover:bg-gray-700 dark:hover:bg-gray-800 transition-colors duration-300 transform hover:scale-105 active:scale-95"
             >
-              <span key={isDarkMode ? 'dark' : 'light'} className="inline-block animate-spin-once">
-                {isDarkMode ? '☀️' : '🌙'}
-              </span>
+              <div key={isDarkMode ? 'dark' : 'light'} className="animate-toggle">
+                {isDarkMode ? (
+                  <svg className="w-6 h-6 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                  </svg>
+                )}
+              </div>
             </button>
           </div>
         </div>
@@ -244,10 +268,21 @@ const Navbar = ({ onMenuToggle }) => {
               </div>
             </li>
 
-            {/* Dark Mode Toggle for Mobile */}
+            {/* Dark Mode Toggle for Mobile with SVG and animation */}
             <li className={mobileMenuItemClass('delay-600')}>
-              <button onClick={toggleDarkMode} className="w-full flex items-center justify-start px-4 py-2 hover:bg-gray-600 dark:hover:bg-gray-700 rounded transition-colors duration-300">
-                <span>{isDarkMode ? `☀️ ${t('darkMode')}` : `🌙 ${t('lightMode')}`}</span>
+              <button onClick={toggleDarkMode} className="w-full flex items-center justify-start px-4 py-2 hover:bg-gray-600 dark:hover:bg-gray-700 rounded transition-colors duration-300 space-x-2">
+                <div key={isDarkMode ? 'dark-mobile' : 'light-mobile'} className="animate-toggle">
+                  {isDarkMode ? (
+                    <svg className="w-6 h-6 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  ) : (
+                    <svg className="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                  )}
+                </div>
+                <span>{isDarkMode ? t('darkMode') : t('lightMode')}</span>
               </button>
             </li>
           </ul>
@@ -258,4 +293,3 @@ const Navbar = ({ onMenuToggle }) => {
 };
 
 export default Navbar;
-
